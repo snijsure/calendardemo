@@ -20,15 +20,16 @@ class DayInfo {
         this.year = year;
     }
 
-    public void addEvent(Appointment event){
+    public void addEvent(Appointment event) {
         appointments.add(event);
     }
+
     /**
      * Get all the events on the day
      *
      * @return list of events
      */
-    public ArrayList<Appointment> getAppointments(){
+    public ArrayList<Appointment> getAppointments() {
         return appointments;
     }
 
@@ -40,17 +41,23 @@ class DayInfo {
         return day;
     }
 
-    public void setDay(int d) { day = d; }
+    public void setDay(int d) {
+        day = d;
+    }
 
     public int getMonth() {
         return month;
     }
 
-    public void setMonth(int m) { month = m; }
+    public void setMonth(int m) {
+        month = m;
+    }
 
     public int getYear() {
         return year;
     }
 
-    public void setYear(int y) { year = y; }
+    public void setYear(int y) {
+        year = y;
+    }
 }

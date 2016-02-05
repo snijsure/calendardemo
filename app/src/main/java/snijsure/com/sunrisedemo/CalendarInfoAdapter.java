@@ -14,16 +14,25 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+/*
+* This class is the Adapter implementation to represent
+* a calendar for a current month and year
+* It uses inner class TextViewHolder that contains
+* label for day.
+* TODO: Extract some of the metods tha actually populate the
+* date array into its own class so it can be unit tested.
+*/
 
 class CalendarInfoAdapter extends RecyclerView.Adapter<CalendarInfoAdapter.TextViewHolder> {
 
-    private static final String TAG="Adapter";
+    private static final String TAG = "Adapter";
     private static final int ITEM_VIEW_TYPE_DAY_NAME = 0;
     private static final int ITEM_VIEW_TYPE_DATE = 1;
     private final List<DayInfo> dayInfoList;
     private Calendar mCalendarToday;
     private int mMonth;
     private int mYear;
+
     public CalendarInfoAdapter(ArrayList<DayInfo> list, int month, int year) {
         mMonth = month;
         mYear = year;
@@ -31,9 +40,11 @@ class CalendarInfoAdapter extends RecyclerView.Adapter<CalendarInfoAdapter.TextV
         dayInfoList = list;
         populateMonth();
     }
+
     public int getMonth() {
         return mMonth;
     }
+
     public int getYear() {
         return mYear;
     }
@@ -47,28 +58,27 @@ class CalendarInfoAdapter extends RecyclerView.Adapter<CalendarInfoAdapter.TextV
 
 
         GregorianCalendar mCalendar = new GregorianCalendar(mYear, mMonth, 1);
-        int firstDay = getFirstDayOfTheWeek(mCalendar.get(Calendar.DAY_OF_WEEK)) -1;
+        int firstDay = getFirstDayOfTheWeek(mCalendar.get(Calendar.DAY_OF_WEEK)) - 1;
 
         if (mMonth == 0) {
             forYear = mYear - 1;
-            prevMonthEndDate = daysInMonth(11,forYear);
-        }
-        else {
-            prevMonthEndDate = daysInMonth(mMonth - 1,mYear);
+            prevMonthEndDate = daysInMonth(11, forYear);
+        } else {
+            prevMonthEndDate = daysInMonth(mMonth - 1, mYear);
         }
 
-        while ( firstDay > 0 && mDaysAdded < 42) {
-            dayInfo  = dayInfoList.get(mDaysAdded);
-            dayInfo.setDay(prevMonthEndDate-firstDay);
-            dayInfo.setMonth(mMonth-1);
+        while (firstDay > 0 && mDaysAdded < 42) {
+            dayInfo = dayInfoList.get(mDaysAdded);
+            dayInfo.setDay(prevMonthEndDate - firstDay);
+            dayInfo.setMonth(mMonth - 1);
             dayInfo.setYear(forYear);
             mDaysAdded++;
             firstDay--;
         }
 
-        int maxDays = daysInMonth(mMonth,mYear);
-        for ( i = 0; i < maxDays && mDaysAdded < 42; i++) {
-            dayInfo  = dayInfoList.get(mDaysAdded);
+        int maxDays = daysInMonth(mMonth, mYear);
+        for (i = 0; i < maxDays && mDaysAdded < 42; i++) {
+            dayInfo = dayInfoList.get(mDaysAdded);
             dayInfo.setDay(i);
             dayInfo.setMonth(mMonth);
             dayInfo.setYear(mYear);
@@ -76,22 +86,22 @@ class CalendarInfoAdapter extends RecyclerView.Adapter<CalendarInfoAdapter.TextV
             mDaysAdded++;
         }
 
-        if ( mMonth == 11 ) {
+        if (mMonth == 11) {
             forYear = mYear + 1;
         }
 
         i = 0;
         while (mDaysAdded < 42) {
-            dayInfo  = dayInfoList.get(mDaysAdded);
+            dayInfo = dayInfoList.get(mDaysAdded);
             dayInfo.setDay(i);
-            dayInfo.setMonth(mMonth+1);
+            dayInfo.setMonth(mMonth + 1);
             dayInfo.setYear(forYear);
             mDaysAdded++;
             i++;
         }
     }
 
-    private int daysInMonth(int month,int year) {
+    private int daysInMonth(int month, int year) {
         Calendar cal = new GregorianCalendar(year, month, 1);
         return cal.getActualMaximum(Calendar.DAY_OF_MONTH);
     }
@@ -128,8 +138,8 @@ class CalendarInfoAdapter extends RecyclerView.Adapter<CalendarInfoAdapter.TextV
     @Override
     public TextViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
-        if ( viewType == ITEM_VIEW_TYPE_DAY_NAME )
-             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.day_name, parent, false);
+        if (viewType == ITEM_VIEW_TYPE_DAY_NAME)
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.day_name, parent, false);
         else
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
         return new TextViewHolder(view);
@@ -160,16 +170,16 @@ class CalendarInfoAdapter extends RecyclerView.Adapter<CalendarInfoAdapter.TextV
                 holder.textView.setText("Sat");
                 break;
             default:
-                DayInfo d = dayInfoList.get(position-7);
-                if ( d.getMonth() != mMonth )
+                DayInfo d = dayInfoList.get(position - 7);
+                if (d.getMonth() != mMonth)
                     holder.textView.setBackgroundColor(Color.LTGRAY);
                 else {
-                    if ( isToday(d.getDay(),d.getMonth(),d.getYear() ) )
+                    if (isToday(d.getDay(), d.getMonth(), d.getYear()))
                         holder.textView.setBackgroundColor(Color.RED);
                     else
                         holder.textView.setBackgroundColor(Color.TRANSPARENT);
                 }
-                final String label = Integer.toString(d.getDay()+1);
+                final String label = Integer.toString(d.getDay() + 1);
                 holder.textView.setText(label);
                 /*
                   If the last row will have only days from next month just hide
@@ -178,7 +188,7 @@ class CalendarInfoAdapter extends RecyclerView.Adapter<CalendarInfoAdapter.TextV
                   interesting case. Write unit test to test these out...
                   http://www.timeanddate.com/calendar/weekday-saturday-1
                  */
-                if ( position > 41 && d.getMonth() != mMonth )
+                if (position > 41 && d.getMonth() != mMonth)
                     holder.textView.setVisibility(View.GONE);
 
                 holder.textView.setOnClickListener(new View.OnClickListener() {
@@ -194,25 +204,23 @@ class CalendarInfoAdapter extends RecyclerView.Adapter<CalendarInfoAdapter.TextV
 
     @Override
     public int getItemViewType(int position) {
-        if ( position <= 6 ) {
+        if (position <= 6) {
             return ITEM_VIEW_TYPE_DAY_NAME;
-        }
-        else
+        } else
             return ITEM_VIEW_TYPE_DATE;
     }
 
     @Override
     public int getItemCount() {
-        return dayInfoList.size()+ 7;
+        return dayInfoList.size() + 7;
     }
 
     public void nextMonth() {
 
-        if( mMonth == 11 ) {
+        if (mMonth == 11) {
             mMonth = 1;
             mYear += 1;
-        }
-        else {
+        } else {
             mMonth += 1;
         }
         populateMonth();
@@ -220,15 +228,15 @@ class CalendarInfoAdapter extends RecyclerView.Adapter<CalendarInfoAdapter.TextV
 
     public void prevMonth() {
 
-        if( mMonth == 0 ) {
+        if (mMonth == 0) {
             mMonth = 11;
             mYear -= 1;
-        }
-        else {
+        } else {
             mMonth -= 1;
         }
         populateMonth();
     }
+
     public String getCurrentMonthAndYear() {
 
         String monthName = new DateFormatSymbols().getMonths()[mMonth];
@@ -238,7 +246,9 @@ class CalendarInfoAdapter extends RecyclerView.Adapter<CalendarInfoAdapter.TextV
     }
 
     public class TextViewHolder extends RecyclerView.ViewHolder {
+        // TODO: Make textView private , provide some methods
         public TextView textView;
+
         public TextViewHolder(View itemView) {
             super(itemView);
             textView = (TextView) itemView.findViewById(R.id.text);

@@ -1,9 +1,8 @@
-<TextView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/text"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:textAppearance="?android:attr/textAppearanceSmall"
     android:padding="8dp"
-    tools:text="0"/>
+    android:textAppearance="?android:attr/textAppearanceSmall"
+    tools:text="0" />

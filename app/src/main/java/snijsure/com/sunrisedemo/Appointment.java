@@ -9,7 +9,7 @@ import java.util.Locale;
 
 /*
  * This class represents an appointment
- * with start and end times in milliseconds
+ * with start and end times in milliseconds.
  */
 class Appointment implements Comparable<Appointment> {
 

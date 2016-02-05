@@ -8,6 +8,13 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+/* 
+* This classs is adapter interface to represent
+* all the appointments one may have in the calendar.
+* It uses inner class ApptHolder that contains the view
+* information to display it on the screen.
+*/
+
 public class ApptInfoAdapter extends RecyclerView.Adapter<ApptInfoAdapter.ApptHolder> {
 
     // Right now appointments are only added to this list
