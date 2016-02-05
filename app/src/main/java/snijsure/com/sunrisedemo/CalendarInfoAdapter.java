@@ -1,29 +1,34 @@
 package snijsure.com.sunrisedemo;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
-class CalendarInfoAdapter extends RecyclerView.Adapter<TextViewHolder> {
+
+class CalendarInfoAdapter extends RecyclerView.Adapter<CalendarInfoAdapter.TextViewHolder> {
 
     private static final String TAG="Adapter";
     private static final int ITEM_VIEW_TYPE_DAY_NAME = 0;
     private static final int ITEM_VIEW_TYPE_DATE = 1;
-    private ArrayList<DayInfo> dayInfoList;
+    private final List<DayInfo> dayInfoList;
     private Calendar mCalendarToday;
     private int mMonth;
     private int mYear;
-    public CalendarInfoAdapter(int month, int year) {
+    public CalendarInfoAdapter(ArrayList<DayInfo> list, int month, int year) {
         mMonth = month;
         mYear = year;
         mCalendarToday = Calendar.getInstance();
-        dayInfoList = new ArrayList<>();
+        dayInfoList = list;
         populateMonth();
     }
     public int getMonth() {
@@ -33,13 +38,13 @@ class CalendarInfoAdapter extends RecyclerView.Adapter<TextViewHolder> {
         return mYear;
     }
 
-    private void populateMonth() {
+    private synchronized void populateMonth() {
         int prevMonthEndDate;
         int forYear = mYear;
         int mDaysAdded = 0;
         int i;
+        DayInfo dayInfo;
 
-        dayInfoList.clear();
 
         GregorianCalendar mCalendar = new GregorianCalendar(mYear, mMonth, 1);
         int firstDay = getFirstDayOfTheWeek(mCalendar.get(Calendar.DAY_OF_WEEK)) -1;
@@ -52,19 +57,22 @@ class CalendarInfoAdapter extends RecyclerView.Adapter<TextViewHolder> {
             prevMonthEndDate = daysInMonth(mMonth - 1,mYear);
         }
 
-        while ( firstDay > 0 ) {
-            DayInfo d = new DayInfo((prevMonthEndDate-firstDay),mMonth-1,forYear);
-
-            dayInfoList.add(d);
-
+        while ( firstDay > 0 && mDaysAdded < 42) {
+            dayInfo  = dayInfoList.get(mDaysAdded);
+            dayInfo.setDay(prevMonthEndDate-firstDay);
+            dayInfo.setMonth(mMonth-1);
+            dayInfo.setYear(forYear);
             mDaysAdded++;
             firstDay--;
         }
 
         int maxDays = daysInMonth(mMonth,mYear);
-        for ( i = 0; i < maxDays; i++) {
-            DayInfo d = new DayInfo(i,mMonth,mYear);
-            dayInfoList.add(d);
+        for ( i = 0; i < maxDays && mDaysAdded < 42; i++) {
+            dayInfo  = dayInfoList.get(mDaysAdded);
+            dayInfo.setDay(i);
+            dayInfo.setMonth(mMonth);
+            dayInfo.setYear(mYear);
+
             mDaysAdded++;
         }
 
@@ -73,9 +81,11 @@ class CalendarInfoAdapter extends RecyclerView.Adapter<TextViewHolder> {
         }
 
         i = 0;
-        while (mDaysAdded != 35) {
-            DayInfo d = new DayInfo(i,mMonth+1,forYear);
-            dayInfoList.add(d);
+        while (mDaysAdded < 42) {
+            dayInfo  = dayInfoList.get(mDaysAdded);
+            dayInfo.setDay(i);
+            dayInfo.setMonth(mMonth+1);
+            dayInfo.setYear(forYear);
             mDaysAdded++;
             i++;
         }
@@ -83,8 +93,7 @@ class CalendarInfoAdapter extends RecyclerView.Adapter<TextViewHolder> {
 
     private int daysInMonth(int month,int year) {
         Calendar cal = new GregorianCalendar(year, month, 1);
-        int ret = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
-        return ret;
+        return cal.getActualMaximum(Calendar.DAY_OF_MONTH);
     }
 
 
@@ -130,37 +139,48 @@ class CalendarInfoAdapter extends RecyclerView.Adapter<TextViewHolder> {
     public void onBindViewHolder(final TextViewHolder holder, final int position) {
         switch (position) {
             case 0:
-                int mCellType = ITEM_VIEW_TYPE_DAY_NAME;
                 holder.textView.setText("Sun");
                 break;
             case 1:
-                mCellType = ITEM_VIEW_TYPE_DAY_NAME;
                 holder.textView.setText("Mon");
                 break;
             case 2:
-                mCellType = ITEM_VIEW_TYPE_DAY_NAME;
                 holder.textView.setText("Tue");
                 break;
             case 3:
-                mCellType = ITEM_VIEW_TYPE_DAY_NAME;
                 holder.textView.setText("Wed");
                 break;
             case 4:
-                mCellType = ITEM_VIEW_TYPE_DAY_NAME;
                 holder.textView.setText("Thus");
                 break;
             case 5:
-                mCellType = ITEM_VIEW_TYPE_DAY_NAME;
                 holder.textView.setText("Fri");
                 break;
             case 6:
-                mCellType = ITEM_VIEW_TYPE_DAY_NAME;
                 holder.textView.setText("Sat");
                 break;
             default:
-                mCellType = ITEM_VIEW_TYPE_DATE;
-                final String label = Integer.toString(dayInfoList.get(position-7).getDay()+1);
+                DayInfo d = dayInfoList.get(position-7);
+                if ( d.getMonth() != mMonth )
+                    holder.textView.setBackgroundColor(Color.LTGRAY);
+                else {
+                    if ( isToday(d.getDay(),d.getMonth(),d.getYear() ) )
+                        holder.textView.setBackgroundColor(Color.RED);
+                    else
+                        holder.textView.setBackgroundColor(Color.TRANSPARENT);
+                }
+                final String label = Integer.toString(d.getDay()+1);
                 holder.textView.setText(label);
+                /*
+                  If the last row will have only days from next month just hide
+                  those items.
+                  Test this with July 2005, May 2010 those represent
+                  interesting case. Write unit test to test these out...
+                  http://www.timeanddate.com/calendar/weekday-saturday-1
+                 */
+                if ( position > 41 && d.getMonth() != mMonth )
+                    holder.textView.setVisibility(View.GONE);
+
                 holder.textView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -168,6 +188,7 @@ class CalendarInfoAdapter extends RecyclerView.Adapter<TextViewHolder> {
                                 holder.textView.getContext(), label, Toast.LENGTH_SHORT).show();
                     }
                 });
+
         }
     }
 
@@ -185,5 +206,42 @@ class CalendarInfoAdapter extends RecyclerView.Adapter<TextViewHolder> {
         return dayInfoList.size()+ 7;
     }
 
+    public void nextMonth() {
 
+        if( mMonth == 11 ) {
+            mMonth = 1;
+            mYear += 1;
+        }
+        else {
+            mMonth += 1;
+        }
+        populateMonth();
+    }
+
+    public void prevMonth() {
+
+        if( mMonth == 0 ) {
+            mMonth = 11;
+            mYear -= 1;
+        }
+        else {
+            mMonth -= 1;
+        }
+        populateMonth();
+    }
+    public String getCurrentMonthAndYear() {
+
+        String monthName = new DateFormatSymbols().getMonths()[mMonth];
+        String yearName = Integer.toString(mYear);
+        return monthName + " " + yearName;
+
+    }
+
+    public class TextViewHolder extends RecyclerView.ViewHolder {
+        public TextView textView;
+        public TextViewHolder(View itemView) {
+            super(itemView);
+            textView = (TextView) itemView.findViewById(R.id.text);
+        }
+    }
 }

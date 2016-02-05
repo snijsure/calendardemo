@@ -1,52 +1,32 @@
 package snijsure.com.sunrisedemo;
 
 
+import android.support.annotation.NonNull;
+
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
-import java.text.DateFormat;
 
 /*
  * This class represents an appointment
  * with start and end times in milliseconds
  */
-class Appointment {
-    public String getName() {
-        return name;
-    }
+class Appointment implements Comparable<Appointment> {
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    private String name;
+    private String title;
     private String description;
     private String location;
     private final long startMs; // Start of an appointment in milli-seconds.
     private final long endMs; // End of an appointment in milli-seconds.
 
-    public Appointment(String name, String description,
+    public Appointment(String title, String description,
                        String location,
                        long startMs, long endMs) {
         this.startMs = startMs;
         this.endMs = endMs;
         this.location = location;
-        this.name = name;
+        this.title = title;
         this.description = description;
     }
 
@@ -59,5 +39,32 @@ class Appointment {
         DateFormat df = new SimpleDateFormat(dateFormat, Locale.getDefault());
         return df.format(endMs);
 
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public long getStartMs() {
+        return startMs;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+
+    public int compareTo(@NonNull Appointment r) {
+        long s1 = r.getStartMs();
+        if (s1 < startMs)
+            return -1;
+        else if (s1 > startMs)
+            return 1;
+        else
+            return 0;
     }
 }
