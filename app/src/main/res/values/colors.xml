@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="light_green">#7ABA34</color>
+    <color name="day_name_color">#ff8e8e93</color>
 </resources>

@@ -22,27 +22,27 @@
             tools:ignore="UselessParent">
 
             <TextView
-                android:id="@+id/startStop"
+                android:id="@id/startstop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
-                android:id="@+id/title"
+                android:id="@id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autoLink="web"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
-                android:id="@+id/description"
+                android:id="@id/description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/colorAccent" />
 
             <TextView
-                android:id="@+id/location"
+                android:id="@id/location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"

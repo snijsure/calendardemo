@@ -33,6 +33,10 @@ class CalendarInfoAdapter extends RecyclerView.Adapter<CalendarInfoAdapter.TextV
     private int mMonth;
     private int mYear;
 
+    // TODO: extract this from locale info
+    String[] namesOfDays = {
+        "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
+    };
     public CalendarInfoAdapter(ArrayList<DayInfo> list, int month, int year) {
         mMonth = month;
         mYear = year;
@@ -139,48 +143,63 @@ class CalendarInfoAdapter extends RecyclerView.Adapter<CalendarInfoAdapter.TextV
     public TextViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
         if (viewType == ITEM_VIEW_TYPE_DAY_NAME)
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.day_name, parent, false);
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.day_of_the_week, parent, false);
         else
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
-        return new TextViewHolder(view);
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.day_of_the_month, parent, false);
+        return new TextViewHolder(view,viewType);
     }
 
     @Override
     public void onBindViewHolder(final TextViewHolder holder, final int position) {
+        int viewType;
         switch (position) {
             case 0:
-                holder.textView.setText("Sun");
+                viewType = ITEM_VIEW_TYPE_DAY_NAME;
+                holder.textView.setText(namesOfDays[position]);
                 break;
             case 1:
-                holder.textView.setText("Mon");
+                viewType = ITEM_VIEW_TYPE_DAY_NAME;
+                holder.textView.setText(namesOfDays[position]);
                 break;
             case 2:
-                holder.textView.setText("Tue");
+                viewType = ITEM_VIEW_TYPE_DAY_NAME;
+                holder.textView.setText(namesOfDays[position]);
                 break;
             case 3:
-                holder.textView.setText("Wed");
+                viewType = ITEM_VIEW_TYPE_DAY_NAME;
+
+                holder.textView.setText(namesOfDays[position]);
                 break;
             case 4:
-                holder.textView.setText("Thus");
+                viewType = ITEM_VIEW_TYPE_DAY_NAME;
+
+                holder.textView.setText(namesOfDays[position]);
                 break;
             case 5:
-                holder.textView.setText("Fri");
+                viewType = ITEM_VIEW_TYPE_DAY_NAME;
+                holder.textView.setText(namesOfDays[position]);
                 break;
             case 6:
-                holder.textView.setText("Sat");
+                viewType = ITEM_VIEW_TYPE_DAY_NAME;
+                holder.textView.setText(namesOfDays[position]);
                 break;
             default:
+
                 DayInfo d = dayInfoList.get(position - 7);
+                viewType = ITEM_VIEW_TYPE_DATE;
                 if (d.getMonth() != mMonth)
                     holder.textView.setBackgroundColor(Color.LTGRAY);
                 else {
-                    if (isToday(d.getDay(), d.getMonth(), d.getYear()))
+                    if (isToday(d.getDay()+1, d.getMonth(), d.getYear())) {
                         holder.textView.setBackgroundColor(Color.RED);
+                    }
                     else
                         holder.textView.setBackgroundColor(Color.TRANSPARENT);
                 }
                 final String label = Integer.toString(d.getDay() + 1);
                 holder.textView.setText(label);
+                holder.setDayInfo(d);
+
                 /*
                   If the last row will have only days from next month just hide
                   those items.
@@ -194,8 +213,19 @@ class CalendarInfoAdapter extends RecyclerView.Adapter<CalendarInfoAdapter.TextV
                 holder.textView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(
-                                holder.textView.getContext(), label, Toast.LENGTH_SHORT).show();
+                        DayInfo dayInfo = holder.getDayInfo();
+                        if ( dayInfo != null ) {
+                            String monthName = new DateFormatSymbols().getMonths()[dayInfo.getMonth()];
+                            Toast.makeText(
+                                    holder.textView.getContext(),
+                                    Integer.toString(dayInfo.getDay()+1) + "," + monthName,
+                                    Toast.LENGTH_SHORT).show();
+
+                        }
+                        else {
+                            Toast.makeText(
+                                    holder.textView.getContext(), label, Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
 
@@ -248,10 +278,25 @@ class CalendarInfoAdapter extends RecyclerView.Adapter<CalendarInfoAdapter.TextV
     public class TextViewHolder extends RecyclerView.ViewHolder {
         // TODO: Make textView private , provide some methods
         public TextView textView;
-
-        public TextViewHolder(View itemView) {
+        private int mViewType;
+        private DayInfo mDayInfo;
+        public TextViewHolder(View itemView, int viewType) {
             super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.text);
+            mViewType = viewType;
+            mDayInfo = null;
+            if ( viewType == ITEM_VIEW_TYPE_DAY_NAME ) {
+                textView = (TextView) itemView.findViewById(R.id.day_name_text);
+            }
+            else {
+                textView = (TextView) itemView.findViewById(R.id.day_of_the_month_text);
+                textView.setBackgroundResource(R.drawable.oval);
+            }
+        }
+        public void setDayInfo(DayInfo d) {
+            mDayInfo = d;
+        }
+        public DayInfo getDayInfo() {
+            return mDayInfo;
         }
     }
 }

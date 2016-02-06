@@ -59,7 +59,7 @@ public class ApptInfoAdapter extends RecyclerView.Adapter<ApptInfoAdapter.ApptHo
             mHolderView = itemView;
             title = (TextView) itemView.findViewById(R.id.title);
             description = (TextView) itemView.findViewById(R.id.description);
-            startStop = (TextView) itemView.findViewById(R.id.startStop);
+            startStop = (TextView) itemView.findViewById(R.id.startstop);
             location = (TextView) itemView.findViewById(R.id.location);
         }
 
