@@ -1,6 +1,7 @@
 package snijsure.com.sunrisedemo;
 
 
+import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
@@ -13,11 +14,14 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.swipeDown;
+import static android.support.test.espresso.action.ViewActions.swipeUp;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isRoot;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class SunriseDemoTest extends TestCase {
@@ -110,4 +114,28 @@ public class SunriseDemoTest extends TestCase {
         onView(withText("Done")).perform(click());
     }
 
+    @Test
+    public void testAppointmentView() {
+        onView(withId(R.id.appointment_recycler_view)).perform(swipeDown());
+        onView(withId(R.id.appointment_recycler_view)).perform(swipeDown());
+        onView(withId(R.id.appointment_recycler_view)).perform(swipeUp());
+        onView(withId(R.id.appointment_recycler_view)).perform(swipeUp());
+    }
+
+
+    @Test
+    public void testCalendarView() {
+        onView(withId(R.id.calendar_recycler_view)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+
+
+        onView(withId(R.id.calendar_recycler_view)).perform(RecyclerViewActions.actionOnItemAtPosition(6, click()));
+        // Check that Toast is displayed?
+        //onView(withText("6,Februray")).inRoot(withDecorView(not(mActivityRule.getActivity().getWindow().getDecorView()))).check(matches(isDisplayed()));
+
+
+        onView(withId(R.id.calendar_recycler_view)).perform(RecyclerViewActions.actionOnItemAtPosition(13, click()));
+        onView(withId(R.id.calendar_recycler_view)).perform(RecyclerViewActions.actionOnItemAtPosition(20, click()));
+        onView(withId(R.id.calendar_recycler_view)).perform(RecyclerViewActions.actionOnItemAtPosition(27, click()));
+
+    }
 }

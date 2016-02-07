@@ -21,4 +21,7 @@
     <item type="id" name="to_time"/>
     <item type="id" name="set_to_date"/>
     <item type="id" name="set_to_time"/>
+
+    <item type="id" name="calendar_recycler_view"/>
+    <item type="id" name="appointment_recycler_view"/>
 </resources>

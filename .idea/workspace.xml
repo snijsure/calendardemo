@@ -15,9 +15,10 @@
     <list default="true" id="de8e6db6-f5e6-474d-b4df-0abd0abad567" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/androidTest/java/snijsure/com/sunrisedemo/SunriseDemoTest.java" afterPath="$PROJECT_DIR$/app/src/androidTest/java/snijsure/com/sunrisedemo/SunriseDemoTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/snijsure/com/sunrisedemo/AddEventFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/snijsure/com/sunrisedemo/AddEventFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_add_event.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_add_event.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/snijsure/com/sunrisedemo/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/snijsure/com/sunrisedemo/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/ids.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/ids.xml" />
     </list>
     <ignored path="sunrisedemo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -127,18 +128,18 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/snijsure/com/sunrisedemo/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.8888888">
-              <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+            <state vertical-scroll-proportion="-11.111111">
+              <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="58" selection-end-column="57" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DateInfoTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/test/java/snijsure/com/sunrisedemo/DateInfoTest.java">
+      <file leaf-file-name="CalendarInfoAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/snijsure/com/sunrisedemo/CalendarInfoAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="20" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -149,8 +150,8 @@
       <file leaf-file-name="SunriseDemoTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/snijsure/com/sunrisedemo/SunriseDemoTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.22509225">
-              <caret line="87" column="55" selection-start-line="87" selection-start-column="55" selection-end-line="87" selection-end-column="55" />
+            <state vertical-scroll-proportion="0.61254615">
+              <caret line="126" column="36" selection-start-line="126" selection-start-column="36" selection-end-line="126" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -158,87 +159,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <file leaf-file-name="ids.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/ids.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.0588236">
-              <caret line="7" column="32" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="32" />
+            <state vertical-scroll-proportion="-15.0">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="25" selection-end-column="54" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AddEventFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/snijsure/com/sunrisedemo/AddEventFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="150" column="40" selection-start-line="150" selection-start-column="40" selection-end-line="150" selection-end-column="40" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2697#2715#0" expanded="true" />
-                <element signature="e#2717#3025#0" expanded="true" />
-                <element signature="e#3024#3025#0" expanded="true" />
-                <element signature="e#6112#6484#0" expanded="true" />
-                <element signature="e#6483#6484#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dialog_add_event.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_add_event.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="24.509434">
-              <caret line="5" column="37" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sunrise_main.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/sunrise_main.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.716981">
-              <caret line="63" column="47" selection-start-line="63" selection-start-column="28" selection-end-line="63" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="53" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JUnit38ClassRunner.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/internal/runners/JUnit38ClassRunner.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="104" column="52" selection-start-line="104" selection-start-column="52" selection-end-line="104" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CalendarInfoAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/snijsure/com/sunrisedemo/CalendarInfoAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -738,6 +664,11 @@
                 <option name="description" value="Prepare com.android.support:support-v4:23.1.1" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="prepareComAndroidSupportSupportV42311Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support.test.espresso:espresso-contrib:2.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComAndroidSupportTestEspressoEspressoContrib20Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Prepare com.android.support.test.espresso:espresso-core:2.2.1" />
@@ -1379,6 +1310,11 @@
                 <option name="name" value="prepareComAndroidSupportSupportV42311Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support.test.espresso:espresso-contrib:2.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComAndroidSupportTestEspressoEspressoContrib20Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Prepare com.android.support.test.espresso:espresso-core:2.2.1" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="prepareComAndroidSupportTestEspressoEspressoCore221Library" />
@@ -1596,7 +1532,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4364151586000" />
+        <entry key="$PROJECT_DIR$" value="4364189840000" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -1985,17 +1921,17 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/appt_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/sunrise_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/ids.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/snijsure/com/sunrisedemo/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/snijsure/com/sunrisedemo/ApptInfoAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/test/java/snijsure/com/sunrisedemo/ExampleUnitTest.java" />
         <option value="$PROJECT_DIR$/app/src/test/java/snijsure/com/sunrisedemo/DatInfoTest.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/snijsure/com/sunrisedemo/CalendarInfoAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/test/java/snijsure/com/sunrisedemo/DateInfoTest.java" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/dialog_add_event.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/snijsure/com/sunrisedemo/AddEventFragment.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/ids.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/snijsure/com/sunrisedemo/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/snijsure/com/sunrisedemo/SunriseDemoTest.java" />
       </list>
     </option>
@@ -2076,24 +2012,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sunrisedemo" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -2586,24 +2504,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SunriseDemoTest - 2016.02.07 at 04h 58m 53s.xml">
-      <configuration name="SunriseDemoTest" configurationId="AndroidTestRunConfigurationType" />
-    </history-entry>
-    <history-entry file="SunriseDemoTest - 2016.02.07 at 05h 08m 47s.xml">
-      <configuration name="SunriseDemoTest" configurationId="AndroidTestRunConfigurationType" />
-    </history-entry>
-    <history-entry file="SunriseDemoTest - 2016.02.07 at 05h 20m 54s.xml">
-      <configuration name="SunriseDemoTest" configurationId="AndroidTestRunConfigurationType" />
-    </history-entry>
-    <history-entry file="SunriseDemoTest - 2016.02.07 at 05h 25m 19s.xml">
-      <configuration name="SunriseDemoTest" configurationId="AndroidTestRunConfigurationType" />
-    </history-entry>
-    <history-entry file="SunriseDemoTest - 2016.02.07 at 05h 31m 25s.xml">
-      <configuration name="SunriseDemoTest" configurationId="AndroidTestRunConfigurationType" />
-    </history-entry>
-    <history-entry file="SunriseDemoTest - 2016.02.07 at 05h 42m 53s.xml">
-      <configuration name="SunriseDemoTest" configurationId="AndroidTestRunConfigurationType" />
-    </history-entry>
     <history-entry file="SunriseDemoTest - 2016.02.07 at 05h 46m 45s.xml">
       <configuration name="SunriseDemoTest" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
@@ -2616,10 +2516,28 @@
     <history-entry file="SunriseDemoTest - 2016.02.07 at 06h 10m 43s.xml">
       <configuration name="SunriseDemoTest" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
+    <history-entry file="SunriseDemoTest - 2016.02.07 at 06h 26m 57s.xml">
+      <configuration name="SunriseDemoTest" configurationId="AndroidTestRunConfigurationType" />
+    </history-entry>
+    <history-entry file="SunriseDemoTest - 2016.02.07 at 06h 29m 18s.xml">
+      <configuration name="SunriseDemoTest" configurationId="AndroidTestRunConfigurationType" />
+    </history-entry>
+    <history-entry file="SunriseDemoTest - 2016.02.07 at 06h 34m 38s.xml">
+      <configuration name="SunriseDemoTest" configurationId="AndroidTestRunConfigurationType" />
+    </history-entry>
+    <history-entry file="SunriseDemoTest - 2016.02.07 at 06h 39m 14s.xml">
+      <configuration name="SunriseDemoTest" configurationId="AndroidTestRunConfigurationType" />
+    </history-entry>
+    <history-entry file="SunriseDemoTest - 2016.02.07 at 06h 40m 10s.xml">
+      <configuration name="SunriseDemoTest" configurationId="AndroidTestRunConfigurationType" />
+    </history-entry>
+    <history-entry file="SunriseDemoTest - 2016.02.07 at 06h 40m 51s.xml">
+      <configuration name="SunriseDemoTest" configurationId="AndroidTestRunConfigurationType" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="1619" y="368" width="1915" height="1125" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2644,7 +2562,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24986653" sideWeight="0.49413735" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26855314" sideWeight="0.72694397" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39841428" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40832508" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40832508" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2927,14 +2845,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/ids.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.0">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2962,38 +2872,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/snijsure/com/sunrisedemo/CalendarInfoAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/internal/runners/JUnit38ClassRunner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="104" column="52" selection-start-line="104" selection-start-column="52" selection-end-line="104" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/test/java/snijsure/com/sunrisedemo/DateInfoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="20" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="53" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
           <folding />
         </state>
       </provider>
@@ -3005,14 +2887,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.716981">
           <caret line="63" column="47" selection-start-line="63" selection-start-column="28" selection-end-line="63" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/snijsure/com/sunrisedemo/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.8888888">
-          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -3051,10 +2925,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="38" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/test/java/snijsure/com/sunrisedemo/DateInfoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="20" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/ids.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.0">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="25" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/snijsure/com/sunrisedemo/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.111111">
+          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="58" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/snijsure/com/sunrisedemo/CalendarInfoAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/snijsure/com/sunrisedemo/SunriseDemoTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22509225">
-          <caret line="87" column="55" selection-start-line="87" selection-start-column="55" selection-end-line="87" selection-end-column="55" />
+        <state vertical-scroll-proportion="0.61254615">
+          <caret line="126" column="36" selection-start-line="126" selection-start-column="36" selection-end-line="126" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

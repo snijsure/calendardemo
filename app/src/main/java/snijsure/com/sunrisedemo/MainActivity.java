@@ -53,6 +53,13 @@ public class MainActivity extends AppCompatActivity {
         mCalView = new RecyclerView(this);
         mEventView = new RecyclerView(this);
 
+        // Set the ids explicitly so espresso can find these views.
+        //
+        mCalView.setId(R.id.calendar_recycler_view);
+        mEventView.setId(R.id.appointment_recycler_view);
+
+
+
         mCalView.setLayoutManager(gridLayoutMgr);
         mEventView.setLayoutManager(eventLayoutMgr);
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
