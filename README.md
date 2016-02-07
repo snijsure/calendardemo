@@ -38,6 +38,7 @@ Notes to the reviewers:
 
  -Subodh Nijsure ( subodh.nijsure@gmail.com )
 
-![Application Image](sunrise-1.png =100x200)
-
-![Application Image](sunrise-2.png =100x200)
+<hr>
+<img src="https://github.com/snijsure/sunrisedemo/blob/master/sunrise-1.png" width="100" height="150" />
+<hr>
+<img src="https://github.com/snijsure/sunrisedemo/blob/master/sunrise-2.png" width="100" height="150" />
