@@ -6,9 +6,12 @@ Notes to the reviewers:
 
 - What this program does:
 
-   - Establishes two RecyclerView, top recycler view is managed by grid view manager, it holds the calendar 
+   - Establishes two RecyclerView, top recycler view is managed by grid view manager, it holds the calendar
      data.
    - Bottom  recycler view is used to display appointment data.
+   - Note I am not sure if you wanted me to use the built-in date picker dialog to show the calendar, that
+     would be too easy ;)
+     So I implemented my own methods to generate the calendar data, and throw it into gridview....
 
 - Issues
    Where do I start!
