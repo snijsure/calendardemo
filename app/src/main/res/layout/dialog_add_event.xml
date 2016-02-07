@@ -2,7 +2,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minWidth="@dimen/Width.Dialog"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/add_event_dialog">
 
     <TextView
         style="@style/TextView.Header"

@@ -138,7 +138,7 @@ public class AddEventFragment extends DialogFragment {
         set_from_date_text.setText(df.format(fromDate));
     }
 
-    void updateToDate(int year, int month, int day) {
+    public void updateToDate(int year, int month, int day) {
         toCal.set(Calendar.YEAR, year);
         toCal.set(Calendar.MONTH, month);
         toCal.set(Calendar.DAY_OF_MONTH, day);
@@ -146,14 +146,14 @@ public class AddEventFragment extends DialogFragment {
         set_to_date_text.setText(df.format(fromDate));
     }
 
-    void updateFromTime(int hour, int min) {
+    public void updateFromTime(int hour, int min) {
         fromCal.set(Calendar.HOUR, hour);
         fromCal.set(Calendar.MINUTE, min);
         Date fromDate = fromCal.getTime();
         set_from_date_text.setText(df.format(fromDate));
     }
 
-    void updateToTime(int hour, int min) {
+    public void updateToTime(int hour, int min) {
         toCal.set(Calendar.HOUR, hour);
         toCal.set(Calendar.MINUTE, min);
         Date fromDate = toCal.getTime();
@@ -173,7 +173,7 @@ public class AddEventFragment extends DialogFragment {
                 cal.get(Calendar.DAY_OF_MONTH)).show(getFragmentManager(), "to_date");
     }
 
-    @OnClick(R.id.to_time)
+    @OnClick(R.id.from_time)
     public void pick_from_time(View view) {
 
         TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
@@ -186,7 +186,7 @@ public class AddEventFragment extends DialogFragment {
                 "to_time");
     }
 
-    @OnClick(R.id.from_time)
+    @OnClick(R.id.to_time)
     public void pick_to_time(View view) {
         TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
                                          @Override
