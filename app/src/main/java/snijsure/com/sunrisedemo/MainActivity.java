@@ -1,6 +1,7 @@
 package snijsure.com.sunrisedemo;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -59,6 +60,17 @@ public class MainActivity extends AppCompatActivity {
 
         frame1.addView(mCalView, params);
         frame2.addView(mEventView, params);
+
+        FloatingActionButton actionButton = (FloatingActionButton)findViewById(R.id.add_new_appointment);
+        actionButton.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_input_add,
+                null));
+        actionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddEventFragment dialogFragment = new AddEventFragment();
+                dialogFragment.show(getFragmentManager(), "AddEventFragment");
+            }
+        });
 
         mDayInfoList = new ArrayList<DayInfo>(42);
 
@@ -133,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
-            Date d = formatter.parse("2016-02-05 08:30");
+            Date d = formatter.parse("2016-02-06 08:30");
             long timestamp1 = d.getTime();
             long timestamp2 = timestamp1 + 3600000;
 
@@ -142,19 +154,20 @@ public class MainActivity extends AppCompatActivity {
                         "About Android eng job",
                         "100 Market", timestamp1, timestamp2);
 
-                timestamp1 += 1800000;
-                timestamp2 += 3600000;
+                timestamp1 += 3600000;
+                timestamp2 = timestamp1 + 3600000;
                 Appointment app2 = new Appointment("Meeting with Mark",
                         "About cook job",
                         "101 Market Oakland", timestamp1, timestamp2);
-                timestamp1 += 1800000;
-                timestamp2 += 3600000;
+
+                timestamp1 += 3600000;
+                timestamp2 = timestamp1 + 1200000;
                 Appointment app3 = new Appointment("Meeting with Linda",
                         "Swim lesson",
                         "300 California", timestamp1, timestamp2);
 
-                timestamp1 += 1800000;
-                timestamp2 += 3600000;
+                timestamp1 += 3600000;
+                timestamp2 = timestamp1 + 1800000;
                 Appointment app4 = new Appointment("Meeting with Ana",
                         "Yoga class",
                         "400 Telegraph Oakland", timestamp1, timestamp2);

@@ -58,7 +58,15 @@
         android:id="@+id/frame2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="4"></FrameLayout>
+        android:layout_weight="4">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@id/add_new_appointment"
+            style="@style/FloatingActionButton"
+            android:layout_gravity="bottom|end"/>
+    </FrameLayout>
+
+
 </LinearLayout>
 
 

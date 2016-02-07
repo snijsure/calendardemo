@@ -17,6 +17,12 @@ import java.util.ArrayList;
 
 public class ApptInfoAdapter extends RecyclerView.Adapter<ApptInfoAdapter.ApptHolder> {
 
+    enum ApptType {
+        TITLE,      // Indicates this is a title for the day
+        APPOINTMENT, // Indicates this is a valid appt
+        EMPTYDAY // Indicates this day has no appointment.
+    }
+
     // Right now appointments are only added to this list
     private ArrayList<Appointment> mAppointments;
 
@@ -52,6 +58,8 @@ public class ApptInfoAdapter extends RecyclerView.Adapter<ApptInfoAdapter.ApptHo
         TextView description;
         TextView startStop;
         TextView location;
+        int appt_entry_type;
+
 
         public ApptHolder(View itemView) {
             super(itemView);
@@ -68,8 +76,9 @@ public class ApptInfoAdapter extends RecyclerView.Adapter<ApptInfoAdapter.ApptHo
             description.setText(apptItem.getDescription());
             // See documentation at
             // https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html
-            startStop.setText("From " + apptItem.getStartDate("M d y h:mm a") +
-                    " To " + apptItem.getEndDate("M d y h:mm a"));
+            startStop.setText(apptItem.getStartDate("M/d h:mm a") +
+                    "\n" + apptItem.getEndDate("M/d h:mm a") +
+                    "\n" + Long.toString(apptItem.durationInMinutes()) + " min" );
             location.setText(apptItem.getLocation());
 
         }

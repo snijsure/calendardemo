@@ -15,41 +15,57 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="80dp"
-            android:orientation="vertical"
-            tools:ignore="UselessParent">
-
             <TextView
                 android:id="@id/startstop"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="96dip"
+                android:layout_height="48dip"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="6dip"
+                android:textColor="@color/timestamp_color"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:id="@id/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autoLink="web"
+                android:layout_width="fill_parent"
+                android:layout_height="26dip"
+                android:layout_toRightOf="@id/startstop"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/title_color"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:id="@id/description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+
+                android:layout_width="fill_parent"
+                android:layout_height="26dip"
+
+                android:layout_toRightOf="@id/startstop"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/title"
+                android:layout_alignWithParentIfMissing="true"
+
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/description_color"
+                />
 
             <TextView
                 android:id="@id/location"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+
+                android:text="One\nTwo\nThree"
+                android:layout_width="fill_parent"
+                android:layout_height="26dip"
+
+                android:layout_toRightOf="@id/startstop"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/description"
+                android:layout_alignWithParentIfMissing="true"
+
+
                 android:singleLine="true"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/colorAccent" />
-
-            <View style="@style/Divider.Horizontal" />
-        </LinearLayout>
+                android:textColor="@color/location_color"
+                 />
     </RelativeLayout>
+    <View style="@style/Divider.Horizontal" />
 </android.support.v7.widget.CardView>

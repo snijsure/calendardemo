@@ -3,5 +3,16 @@
     <string name="action_settings">Settings</string>
     <string name="action_prev">Prev</string>
     <string name="action_next">Next</string>
-
+    <string name="add_event">Add Event</string>
+    <string name="cancel_add_event">Cancel</string>
+    <string name="AddEvent.Label">Add New Appointment</string>
+    <string name="Hint.Title">Event title</string>
+    <string name="Hint.Description">Event Description</string>
+    <string name="Hint.Location">Location</string>
+    <string name="from_date">Pick Date</string>
+    <string name="from_time">Pick Time</string>
+    <string name="to_date">Pick Date</string>
+    <string name="to_time">Pick Time</string>
+    <string name="appt_start_label">Start Time</string>
+    <string name="app_end_label">End Time</string>
 </resources>

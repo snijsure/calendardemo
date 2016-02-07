@@ -40,6 +40,9 @@ class Appointment implements Comparable<Appointment> {
         return df.format(endMs);
 
     }
+    public long durationInMinutes() {
+        return (endMs-startMs)/60000;
+    }
 
     public String getTitle() {
         return title;

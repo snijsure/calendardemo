@@ -7,4 +7,18 @@
     <item type="id" name="day_name"/>
     <item type="id" name="day_of_the_month_text"/>
     <item type="id" name="day_name_text"/>
+    <item type="id" name="add_event_title"/>
+    <item type="id" name="add_event_description"/>
+    <item type="id" name="add_event_location"/>
+    <item type="id" name="add_new_appointment"/>
+
+    <item type="id" name="from_date"/>
+    <item type="id" name="from_time"/>
+    <item type="id" name="set_from_date"/>
+    <item type="id" name="set_from_time"/>
+
+    <item type="id" name="to_date"/>
+    <item type="id" name="to_time"/>
+    <item type="id" name="set_to_date"/>
+    <item type="id" name="set_to_time"/>
 </resources>
