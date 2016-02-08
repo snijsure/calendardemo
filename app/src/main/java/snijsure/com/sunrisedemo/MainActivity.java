@@ -91,9 +91,17 @@ public class MainActivity extends AppCompatActivity {
         Calendar cal = Calendar.getInstance();
 
 
-        mCalendarAdapter = new CalendarInfoAdapter(mDayInfoList,
-                cal.get(Calendar.MONTH),
-                cal.get(Calendar.YEAR));
+        if ( savedInstanceState != null ) {
+            int month, year;
+            month = savedInstanceState.getInt("month");
+            year = savedInstanceState.getInt("year");
+            mCalendarAdapter = new CalendarInfoAdapter(mDayInfoList, month,year);
+        }
+        else {
+            mCalendarAdapter = new CalendarInfoAdapter(mDayInfoList,
+                    cal.get(Calendar.MONTH),
+                    cal.get(Calendar.YEAR));
+        }
 
         genTestAppointments(120);
         mAppointmentsAdapter = new ApptInfoAdapter(mAppointments);
@@ -126,6 +134,18 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    protected void onRestoreInstanceState (Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+
+        savedInstanceState.putInt("month", mCalendarAdapter.getMonth());
+        savedInstanceState.putInt("year",mCalendarAdapter.getYear());
     }
 
     public void onNextMonth(@SuppressWarnings("UnusedParameters") View v) {

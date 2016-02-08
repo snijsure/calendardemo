@@ -5,9 +5,14 @@ import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
+import android.view.View;
+import android.widget.EditText;
 
 import junit.framework.TestCase;
 
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeMatcher;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,6 +43,17 @@ public class SunriseDemoTest extends TestCase {
         for ( int i = 0; i < 2; i++ ) {
             onView(withId(R.id.prevButton)).perform(click());
         }
+    }
+
+    @Test
+    public void testActivityRecreateTest() {
+        onView(isRoot()).perform(OrientationChangeAction.orientationLandscape());
+        onView(withId(R.id.nextButton)).perform(click()); // March
+        onView(withId(R.id.nextButton)).perform(click()); // April
+        onView(isRoot()).perform(OrientationChangeAction.orientationPortrait());
+        //onView(withText("March 2016")).check(matches(isDisplayed()));
+        onView(withId(R.id.monthLabel)).check(
+                matches(withText("April 2016")));
     }
 
     @Test
@@ -138,4 +154,26 @@ public class SunriseDemoTest extends TestCase {
         onView(withId(R.id.calendar_recycler_view)).perform(RecyclerViewActions.actionOnItemAtPosition(27, click()));
 
     }
+
+
+    private static Matcher<View> withError(final String expected) {
+        return new TypeSafeMatcher<View>() {
+
+            @Override
+            public boolean matchesSafely(View view) {
+                if (!(view instanceof EditText)) {
+                    return false;
+                }
+                EditText editText = (EditText) view;
+                return editText.getError().toString().equals(expected);
+            }
+
+            @Override
+            public void describeTo(Description description) {
+
+            }
+        };
+    }
+
+
 }
