@@ -32,6 +32,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:textColor="@color/title_color"
+                android:singleLine="true"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
@@ -44,6 +45,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@id/title"
                 android:layout_alignWithParentIfMissing="true"
+                android:singleLine="true"
 
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/description_color"
