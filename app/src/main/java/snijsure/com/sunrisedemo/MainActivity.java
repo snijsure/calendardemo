@@ -1,6 +1,11 @@
 package snijsure.com.sunrisedemo;
 
+import android.content.ContentResolver;
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -14,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -103,7 +109,8 @@ public class MainActivity extends AppCompatActivity {
                     cal.get(Calendar.YEAR));
         }
 
-        genTestAppointments(120);
+        //genTestAppointments(120);
+        readCalendarEvent(this);
         mAppointmentsAdapter = new ApptInfoAdapter(mAppointments);
 
         mCalendarAdapter.setHasStableIds(true);
@@ -139,13 +146,15 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onRestoreInstanceState (Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
+        //int month = savedInstanceState.getInt("month");
+        //int year = savedInstanceState.getInt("year");
     }
 
     protected void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
 
         savedInstanceState.putInt("month", mCalendarAdapter.getMonth());
         savedInstanceState.putInt("year",mCalendarAdapter.getYear());
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     public void onNextMonth(@SuppressWarnings("UnusedParameters") View v) {
@@ -153,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
         mCalendarAdapter.nextMonth();
         mCalendarAdapter.notifyDataSetChanged();
         monthLabel.setText(mCalendarAdapter.getCurrentMonthAndYear());
-
+        readCalendarEvent(this);
     }
 
     public void onPrevMonth(@SuppressWarnings("UnusedParameters") View v) {
@@ -161,54 +170,69 @@ public class MainActivity extends AppCompatActivity {
         mCalendarAdapter.prevMonth();
         mCalendarAdapter.notifyDataSetChanged();
         monthLabel.setText(mCalendarAdapter.getCurrentMonthAndYear());
+        readCalendarEvent(this);
     }
 
-    /*
-     * Generates number of dummy appointments.
-     * One could certainly use the CalendarProvider sync adapter to import data
-     * for now this should suffice.
-     */
-    public void genTestAppointments(int numAppts) {
-        try {
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
-            Date d = formatter.parse("2016-02-06 08:30");
-            long timestamp1 = d.getTime();
-            long timestamp2 = timestamp1 + 3600000;
 
-            for (int i = 0; i < numAppts; ) {
-                Appointment app1 = new Appointment("Meeting with Dan",
-                        "About Android eng job",
-                        "100 Market", timestamp1, timestamp2);
+    public void readCalendarEvent(Context context)  {
+        if ( context != null ) {
+            ContentResolver cr = context.getContentResolver();
+            Calendar startTime = Calendar.getInstance();
+            // TODO: Modify mCalendarAdapter interface to return month,year,day of start
+            // and end.
+            startTime.set(mCalendarAdapter.getYear(), mCalendarAdapter.getMonth(), 0, 0, 0);
+            Calendar endTime = Calendar.getInstance();
+            endTime.set(mCalendarAdapter.getYear(), mCalendarAdapter.getMonth(), 31, 23, 59);
 
-                timestamp1 += 3600000;
-                timestamp2 = timestamp1 + 3600000;
-                Appointment app2 = new Appointment("Meeting with Mark",
-                        "About cook job",
-                        "101 Market Oakland", timestamp1, timestamp2);
+            String[] projection = new String[]{CalendarContract.Events.CALENDAR_ID,
+                    CalendarContract.Events.TITLE,
+                    CalendarContract.Events.DESCRIPTION,
+                    CalendarContract.Events.DTSTART, CalendarContract.Events.DTEND,
+                    CalendarContract.Events.EVENT_LOCATION};
+            String sortOrder = CalendarContract.Events.DTSTART + " ASC"; // timeslots.timestart
+            String selection = "(( " + CalendarContract.Events.DTSTART + " >= "
+                    + startTime.getTimeInMillis() + " ) AND ( "
+                    + CalendarContract.Events.DTSTART + " <= " + endTime.getTimeInMillis() + " ))";
+            mAppointments.clear();
 
-                timestamp1 += 3600000;
-                timestamp2 = timestamp1 + 1200000;
-                Appointment app3 = new Appointment("Meeting with Linda",
-                        "Swim lesson",
-                        "300 California", timestamp1, timestamp2);
+            try {
+                Cursor cursor = cr.query(CalendarContract.Events.CONTENT_URI, projection, selection, null, sortOrder);
+                if (cursor.getCount() > 0) {
+                    cursor.moveToFirst();
 
-                timestamp1 += 3600000;
-                timestamp2 = timestamp1 + 1800000;
-                Appointment app4 = new Appointment("Meeting with Ana",
-                        "Yoga class",
-                        "400 Telegraph Oakland", timestamp1, timestamp2);
+                    do {
+                        Appointment appt = new Appointment();
+                        int calendar_id = cursor.getInt(0);
+                        appt.setId(calendar_id);
 
-                mAppointments.add(app1);
-                mAppointments.add(app2);
-                mAppointments.add(app3);
-                mAppointments.add(app4);
-                i += 4;
+                        String title = cursor.getString(1);
+                        appt.setTitle(title);
+
+                        String description = cursor.getString(2);
+                        appt.setDescription(description);
+
+                        long dtstart1 = cursor.getLong(3);
+                        appt.setStartDate(dtstart1);
+
+                        long dtend1 = cursor.getLong(4);
+                        appt.setEndDate(dtend1);
+
+                        String eventlocation = cursor.getString(5);
+                        appt.setLocation(eventlocation);
+                        mAppointments.add(appt);
+                    } while (cursor.moveToNext());
+                    cursor.close();
+                }
+            } catch (AssertionError ex) {
+                ex.printStackTrace();
+            } catch (SecurityException ex) {
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            Log.e(TAG, "Error generating test data");
+            if (mAppointmentsAdapter != null) {
+                mAppointmentsAdapter.notifyDataSetChanged();
+            }
         }
-        Collections.sort(mAppointments);
-
     }
 }
