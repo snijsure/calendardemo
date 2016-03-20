@@ -24,8 +24,10 @@ import static android.support.test.espresso.action.ViewActions.swipeUp;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isRoot;
+import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.containsString;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
@@ -47,13 +49,14 @@ public class SunriseDemoTest extends TestCase {
 
     @Test
     public void testActivityRecreateTest() {
+
         onView(isRoot()).perform(OrientationChangeAction.orientationLandscape());
-        onView(withId(R.id.nextButton)).perform(click()); // March
-        onView(withId(R.id.nextButton)).perform(click()); // April
+        onView(withId(R.id.nextButton)).perform(click()); 
+        onView(withId(R.id.nextButton)).perform(click()); 
         onView(isRoot()).perform(OrientationChangeAction.orientationPortrait());
-        //onView(withText("March 2016")).check(matches(isDisplayed()));
+        // Ref: http://qathread.blogspot.com/2014/01/discovering-espresso-for-android.html
         onView(withId(R.id.monthLabel)).check(
-                matches(withText("April 2016")));
+                matches(withText(containsString("2016"))));
     }
 
     @Test
