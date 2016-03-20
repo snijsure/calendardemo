@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SunriseDemo</string>
+    <string name="app_name">MySunrise</string>
     <string name="action_settings">Settings</string>
     <string name="action_prev">Prev</string>
     <string name="action_next">Next</string>
